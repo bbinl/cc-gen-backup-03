@@ -4688,7 +4688,7 @@ function Ti(t, e) {
                         month: "",
                         year: "",
                         ccv2: "",
-                        quantity: 10,
+                        quantity: 15,
                         dateEnabled: !0,
                         ccv2Enabled: !0,
                         creditCards: "",
