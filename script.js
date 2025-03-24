@@ -4684,7 +4684,7 @@ function Ti(t, e) {
             i = {
                 data: function() {
                     return {
-                        bin: 515462002115xxxx,
+                        bin: "",
                         month: "",
                         year: "",
                         CVC: "",
@@ -4797,6 +4797,7 @@ function Ti(t, e) {
                         type: "text",
                         name: "bin",
                         id: "bin",
+                        placeholder: "51546200xxxxxxxx",
                         autofocus: ""
                     },
                     domProps: {
