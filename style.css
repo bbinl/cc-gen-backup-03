@@ -1,3 +1,24 @@
+/*new section*/
+        .info {
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 10px;
+        }
+        .copy-text {
+            cursor: pointer;
+            background-color: #444;
+            padding: 2px 5px;
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 18px;
+        }
+        .copy-text:hover {
+            background-color: #555;
+        }
+
 /* Link Section */
 .link-section {
     margin: 15px 0;
