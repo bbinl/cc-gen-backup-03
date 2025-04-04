@@ -1,5 +1,3 @@
-
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,73 +22,254 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-<div id="app">
-  <nav class="navigations">
-        <div class="site-header">
-            <img src="favicon.png" alt="Logo" class="header-logo">
-            BBINL CC Gen
-        </div>
-    </nav>
+  <div class="page-container">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-title">BBNL CC Gen</h1>
+    </header>
 
-  <div align="center" class="link-section">
-            <a href="https://bbinl.github.io/cc-checker/" class="btn-link" class="link">
-                <i class="fa-solid fa-credit-card"></i> CC Checker
-            </a> 
-</div>  
-    
-<div class="container">
-        <div class="info">
-            <span>YT Premium BIN:</span>
-            <span class="copy-text" onclick="copyToClipboard(this)"><code>515462002115xxxx</code></span>
+    <!-- BIN Information Section -->
+    <div class="bin-section">
+      <!-- Mobile BIN Examples -->
+      <div class="bin-examples-mobile">
+        <div class="bin-examples">
+          <div class="bin-item">
+            YT Premium BIN: <code>515462002115xxxx</code>
+          </div>
+          <div class="bin-item">
+            Canva Pro BIN: <code>Not Available RN</code>
+          </div>
+          <div class="bin-item">
+            Hotspot Shield BIN: <code>41546444006xxxxx</code>
+          </div>
         </div>
-        <div class="info">
-            <span>Canva Pro BIN:</span>
-            <span class="copy-text" onclick="copyToClipboard(this)"><code>Not Available RN</code></span>
-        </div>
-        <div class="info">
-            <span>Hotspot Shield BIN:</span>
-            <span class="copy-text" onclick="copyToClipboard(this)"><code>41546444006xxxxx</code></span>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <form-generator></form-generator>
-<button type="submit" class="btn btn-primary btn-block" onclick="copy()"><b>Copy Cards</b></button>
+      </div>
+
+      <!-- Mobile BIN Dropdown Cards -->
+      <div class="bin-dropdown-mobile">
+        <!-- YouTube Premium Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">YouTube Premium BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value bin-dropdown-bin">515462002115xxxx</span>
             </div>
-            <div class="col-md-6">
-                <generated-credit-cards></generated-credit-cards>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">01/27</span>
             </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Street:</span>
+              <span class="bin-dropdown-value">IND,0062</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Postcode:</span>
+              <span class="bin-dropdown-value">020101</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Province:</span>
+              <span class="bin-dropdown-value">Almaty</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">City:</span>
+              <span class="bin-dropdown-value">Semipalatinsk</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Country:</span>
+              <span class="bin-dropdown-value">Kazakhstan</span>
+            </div>
+          </div>
         </div>
-        <input type="hidden" name="IL_IN_ARTICLE">
-        <input type="hidden" name="IL_IN_TAG" value="2">
- 
+
+        <!-- Canva Pro Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">Canva Pro BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value">Not Available RN</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">01/27</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Street:</span>
+              <span class="bin-dropdown-value">IND,0062</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Postcode:</span>
+              <span class="bin-dropdown-value">020101</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Province:</span>
+              <span class="bin-dropdown-value">Almaty</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">City:</span>
+              <span class="bin-dropdown-value">Semipalatinsk</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Country:</span>
+              <span class="bin-dropdown-value">Kazakhstan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Shield Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">Hotspot Shield BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value bin-dropdown-bin">41546444006xxxxx</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">10/27</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Street:</span>
+              <span class="bin-dropdown-value">-</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">ZIP:</span>
+              <span class="bin-dropdown-value">1000</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Province:</span>
+              <span class="bin-dropdown-value">-</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">City:</span>
+              <span class="bin-dropdown-value">-</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Country:</span>
+              <span class="bin-dropdown-value">OWN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop BIN Cards -->
+      <div class="bin-cards-desktop">
+        <!-- YouTube Premium Card -->
+        <div class="bin-card">
+          <div class="bin-card-title">YouTube Premium BIN</div>
+          <div class="bin-detail"><strong>BIN:</strong> <code>515462002115xxxx</code></div>
+          <div class="bin-detail"><strong>Date:</strong> 01/27</div>
+          <div class="bin-detail"><strong>Street:</strong> IND,0062</div>
+          <div class="bin-detail"><strong>Postcode:</strong> 020101</div>
+          <div class="bin-detail"><strong>Province:</strong> Almaty</div>
+          <div class="bin-detail"><strong>City:</strong> Semipalatinsk</div>
+          <div class="bin-detail"><strong>Country:</strong> Kazakhstan</div>
+        </div>
+
+        <!-- Canva Pro Card -->
+        <div class="bin-card">
+          <div class="bin-card-title">Canva Pro BIN</div>
+          <div class="bin-detail"><strong>BIN:</strong> Not Available RN</div>
+          <div class="bin-detail"><strong>Date:</strong> 01/27</div>
+          <div class="bin-detail"><strong>Street:</strong> IND,0062</div>
+          <div class="bin-detail"><strong>Postcode:</strong> 020101</div>
+          <div class="bin-detail"><strong>Province:</strong> Almaty</div>
+          <div class="bin-detail"><strong>City:</strong> Semipalatinsk</div>
+          <div class="bin-detail"><strong>Country:</strong> Kazakhstan</div>
+        </div>
+
+        <!-- Hotspot Shield Card -->
+        <div class="bin-card">
+          <div class="bin-card-title">Hotspot Shield BIN</div>
+          <div class="bin-detail"><strong>BIN:</strong> <code>41546444006xxxxx</code></div>
+          <div class="bin-detail"><strong>Date:</strong> 10/27</div>
+          <div class="bin-detail"><strong>Street:</strong> - </div>
+          <div class="bin-detail"><strong>ZIP:</strong> 1000</div>
+          <div class="bin-detail"><strong>Province:</strong> - </div>
+          <div class="bin-detail"><strong>City:</strong> - </div>
+          <div class="bin-detail"><strong>Country:</strong> OWN</div>
+        </div>
+      </div>
     </div>
- <br>
- <center><p>Copyright 2025 All Rights Reserved <a href="https://t.me/bro_bin_lagbe" >&nbsp;©Bro Bin Lagbe </a>
-    </center>
- <div id="hiddenElement" style="display: none;">
-    source code: https://github.com/avipatilpro/CC_Gen?tab=readme-ov-file , https://avipatilpro.github.io/CC_Gen/
- </div>
 
-        <script>
-function copy(){
-    document.querySelector("textarea").select();
-    document.execCommand('copy');
-}
-</script>
+    <!-- CC Checker Button -->
+    <div class="cc-checker-container">
+      <a href="https://bbinl.github.io/cc-checker/" class="cc-checker-btn">CC Checker</a>
+    </div>
 
-  <script>
-        function copyToClipboard(element) {
-            const text = element.innerText;
-            navigator.clipboard.writeText(text).catch(err => {
-                alert('Failed to copy! Please try again.');
-                console.error('Failed to copy: ', err);
-            });
-        }
-    </script>
-    
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Input Section (Left Side) -->
+      <div class="input-section">
+        <div class="form-group">
+          <label for="bin">BIN:</label>
+          <input type="text" id="bin" class="bin-input" placeholder="51546200xxxxxxxx" value="" autocomplete="off">
+          <div class="bin-history" id="binHistory"></div>
+        </div>
+        
+        <div class="form-group">
+          <div class="form-row">
+            <div class="form-col">
+              <label for="month">Month</label>
+              <select id="month">
+                <option value="Random">Random</option>
+              </select>
+            </div>
+            <div class="form-col">
+              <label for="year">Year</label>
+              <select id="year">
+                <option value="Random">Random</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- Updated CVC and Quantity layout -->
+        <div class="cvc-quantity-group">
+          <div class="cvc-quantity-item">
+            <label for="ccv">CVC</label>
+            <input type="number" id="ccv" placeholder="Random">
+          </div>
+          <div class="cvc-quantity-item">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" value="15" min="1" max="1000">
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button onclick="generateCards()">Generate Cards</button>
+          <button onclick="copyOutput()">Copy All Cards</button>
+        </div>
+      </div>
+
+      <!-- Output Section (Right Side) -->
+      <div class="output-section">
+        <div class="form-group">
+          <label for="output">Generated Cards:</label>
+          <textarea id="output" placeholder="Generated cards will appear here..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Footer -->
+    <footer class="page-footer">
+      Copyright 2025 All Rights Reserved <a href="https://t.me/bro_bin_lagbe"> ©Bro Bin Lagbe </a>
+    </footer>
+  </div>
+
+  <!-- Copy Notification -->
+  <div class="copy-notification" id="copyNotification">
+    Copied to clipboard!
+  <c/div>
 <script src="script.js"></script>
-   </body>
-      </html>
+</body>
+</html>c
