@@ -133,6 +133,7 @@
       color: var(--text);
       text-align: right;
       font-family: monospace;
+      cursor: pointer;
     }
     
     .bin-dropdown-bin {
