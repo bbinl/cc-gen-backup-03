@@ -185,3 +185,46 @@ document.querySelectorAll('.copyable, .bin-item code, .bin-detail code, .bin-dro
             });
     });
 });
+
+
+
+  // শুধুমাত্র আপনার সাইট থেকে অ্যাক্সেস পারমিট করবে
+  const allowedDomains = [
+    "https://bbinl.github.io/cc-gen/",
+    "https://bbinl.github.io/cc-gen", // without trailing slash
+    "http://localhost:3000" // লোকাল ডেভেলপমেন্টের জন্য (যদি প্রয়োজন হয়)
+  ];
+
+  const isAllowed = allowedDomains.some(domain => 
+    window.location.href.startsWith(domain)
+  );
+
+  if (!isAllowed) {
+    document.body.innerHTML = `
+      <div style="text-align:center; padding:50px; font-family: Arial, sans-serif;">
+        <h1 style="color:red;">⚠️ অননুমোদিত অ্যাক্সেস!</h1>
+        <p>এই টুল শুধুমাত্র <a href="https://bbinl.github.io/cc-gen/" style="color:#3498db;">
+        অফিসিয়াল GitHub পেজ</a> থেকে ব্যবহার করুন</p>
+        
+        <div style="margin-top:30px; padding:20px; background:#f8f9fa; border-radius:5px;">
+          <p>⛔ URL: ${window.location.href}</p>
+          <p>🕒 Time: ${new Date().toLocaleString()}</p>
+        </div>
+      </div>
+    `;
+    
+    // লোডিং সম্পূর্ণ বন্ধ করে দেবে
+    window.stop(); 
+    
+    // কনসোলে ওয়ার্নিং পাঠাবে
+    console.error("%cস্টপ! অননুমোদিত অ্যাক্সেস", 
+      "color:red;font-size:20px;font-weight:bold;");
+    console.log("এই টুল শুধুমাত্র https://bbinl.github.io/cc-gen/ থেকে এক্সেস করা যাবে");
+    
+    // Google Analytics বা অন্যান্য ট্র্যাকিং সার্ভিসে রিপোর্ট করতে পারেন (যদি থাকে)
+    if(typeof gtag !== 'undefined') {
+      gtag('event', 'blocked_access', {
+        'unauthorized_url': window.location.href
+      });
+    }
+  }
