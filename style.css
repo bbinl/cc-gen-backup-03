@@ -25,7 +25,7 @@ body {
   background-color: var(--darker);
   color: var(--text);
   line-height: 1.6;
-  padding: 0px;
+  padding: 0;
   min-height: 100vh;
 }
 
@@ -39,7 +39,6 @@ body {
   border: 1px solid var(--border);
 }
 
-/* Header Styles */
 .page-header {
   background-color: var(--lighter);
   color: var(--text);
@@ -55,14 +54,12 @@ body {
   color: var(--primary);
 }
 
-/* BIN Section */
 .bin-section {
   padding: 10px 20px;
   background-color: var(--light);
   border-bottom: 1px solid var(--border);
 }
 
-/* BIN Dropdown Container */
 .bin-dropdown-container {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +67,6 @@ body {
   margin-top: 10px;
 }
 
-/* BIN Dropdown Card */
 .bin-dropdown-card {
   flex: 1;
   min-width: 250px;
@@ -145,7 +141,6 @@ body {
   font-weight: bold;
 }
 
-/* CC Checker Button */
 .cc-checker-container {
   text-align: center;
   padding: 10px;
@@ -173,11 +168,10 @@ body {
   transform: translateY(-2px);
 }
 
-/* Main Content Area */
 .main-content {
   display: flex;
   flex-wrap: wrap;
-  padding: 0px;
+  padding: 15px;
 }
 
 .input-section, .output-section {
@@ -192,7 +186,6 @@ body {
 
 .form-group {
   margin-bottom: 15px;
-  position: relative;
 }
 
 label {
@@ -224,54 +217,22 @@ input:focus, select:focus, textarea:focus {
   font-family: monospace;
 }
 
+/* Form row styling for side-by-side fields */
 .form-row {
   display: flex;
   gap: 15px;
+  margin-bottom: 15px;
 }
 
 .form-col {
   flex: 1;
+  min-width: 0;
 }
 
-/* BIN History Drop-up */
-.bin-history {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  max-height: 200px;
-  overflow-y: auto;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 5px 5px 0 0;
-  z-index: 10;
-  display: none;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-
-.bin-history-item {
-  padding: 8px 10px;
-  cursor: pointer;
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #333;
-  border-bottom: 1px solid #eee;
-}
-
-.bin-history-item:last-child {
-  border-bottom: none;
-}
-
-.bin-history-item:hover {
-  background-color: #f5f5f5;
-}
-
-/* Updated CVC/Quantity layout */
+/* CVC & Quantity specific styling */
 .cvc-quantity-group {
   display: flex;
   gap: 15px;
-  margin-bottom: 15px;
 }
 
 .cvc-quantity-item {
@@ -283,11 +244,10 @@ input:focus, select:focus, textarea:focus {
   display: block;
 }
 
-/* Button Container */
 .button-container {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 button {
@@ -295,7 +255,7 @@ button {
   background: var(--button-gradient);
   color: black;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -315,7 +275,6 @@ textarea {
   background-color: var(--lighter);
 }
 
-/* Footer */
 .page-footer {
   text-align: center;
   padding: 10px;
@@ -334,12 +293,6 @@ textarea {
   text-decoration: underline;
 }
 
-/* Animation for copy feedback */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .copy-notification {
   position: fixed;
   top: 20px;
@@ -349,42 +302,38 @@ textarea {
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  animation: fadeIn 0.3s ease-out;
   z-index: 1000;
   display: none;
 }
 
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+
   .input-section {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 
-  .main-content {
-    flex-direction: column;
-  }
-
   .form-row, .cvc-quantity-group {
-    flex-direction: column;
-    gap: 0;
+    flex-direction: row; /* Keep fields side-by-side on mobile */
+    gap: 10px;
   }
 
   .form-col, .cvc-quantity-item {
-    margin-bottom: 15px;
-  }
-  
-  .bin-history {
-    width: 90%;
+    width: 50%; /* Each field takes half width */
+    margin-bottom: 0;
   }
 
-  .bin-dropdown-container {
-    flex-direction: column;
-    gap: 10px;
+  input, select {
+    padding: 8px;
+    font-size: 14px;
   }
-  
-  .bin-dropdown-card {
-    width: 100%;
-    min-width: auto;
-  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
