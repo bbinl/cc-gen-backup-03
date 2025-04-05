@@ -1,4 +1,4 @@
-    document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
     // Initialize month and year dropdowns (from original)
     let monthDropdown = document.getElementById("month");
     let yearDropdown = document.getElementById("year");
@@ -165,8 +165,8 @@ function copyOutput() {
     showCopyNotification(); // Uses the enhanced notification
 }
 
-// Initialize click-to-copy for BIN examples (from enhanced version)
-document.querySelectorAll('.bin-item code, .bin-detail code, .bin-dropdown-value').forEach(code => {
+// Initialize click-to-copy for all copyable elements
+document.querySelectorAll('.copyable, .bin-item code, .bin-detail code, .bin-dropdown-value').forEach(code => {
     code.addEventListener('click', function() {
         navigator.clipboard.writeText(this.textContent)
             .then(() => {
@@ -174,6 +174,14 @@ document.querySelectorAll('.bin-item code, .bin-detail code, .bin-dropdown-value
             })
             .catch(err => {
                 console.error('Failed to copy: ', err);
+                // Fallback for browsers that don't support navigator.clipboard
+                const textarea = document.createElement('textarea');
+                textarea.value = this.textContent;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showCopyNotification();
             });
     });
 });
