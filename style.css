@@ -171,7 +171,7 @@ body {
 .main-content {
   display: flex;
   flex-wrap: wrap;
-  padding: 15px;
+  padding: 0;
 }
 
 .input-section, .output-section {
