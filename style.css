@@ -256,7 +256,7 @@
     .main-content {
       display: flex;
       flex-wrap: wrap;
-      padding: 15px;
+      padding: 0px;
     }
 
     .input-section, .output-section {
