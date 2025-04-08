@@ -1,5 +1,5 @@
-   document.addEventListener("DOMContentLoaded", function () {
-    // Initialize month and year dropdowns (from original)
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize month and year dropdowns
     let monthDropdown = document.getElementById("month");
     let yearDropdown = document.getElementById("year");
 
@@ -11,23 +11,14 @@
         monthDropdown.appendChild(option);
     }
 
-    // Add years (updated range from original)
+    // Add years
     for (let i = 2026; i <= 2050; i++) {
         let option = document.createElement("option");
         option.value = i;
         option.textContent = i;
         yearDropdown.appendChild(option);
     }
-
-    // Initialize BIN history system (from enhanced version)
-    savedBins = JSON.parse(localStorage.getItem('binHistory')) || [];
-    updateBinHistoryDropdown();
 });
-
-// BIN History System (from enhanced version) =============
-let savedBins = [];
-const binInput = document.getElementById('bin');
-const binHistory = document.getElementById('binHistory');
 
 function showCopyNotification() {
     const notification = document.getElementById("copyNotification");
@@ -45,67 +36,6 @@ function toggleDropdown(header) {
     details.classList.toggle('show');
     arrow.classList.toggle('down');
 }
-
-function saveBinToHistory(bin) {
-    if (!bin || bin.length < 6) return;
-    
-    savedBins = savedBins.filter(b => b !== bin);
-    savedBins.push(bin);
-    
-    if (savedBins.length > 5) {
-        savedBins = savedBins.slice(-5);
-    }
-    
-    localStorage.setItem('binHistory', JSON.stringify(savedBins));
-    updateBinHistoryDropdown();
-}
-
-function updateBinHistoryDropdown() {
-    binHistory.innerHTML = '';
-    
-    if (savedBins.length === 0) return;
-    
-    savedBins.forEach(bin => {
-        const item = document.createElement('div');
-        item.className = 'bin-history-item';
-        item.textContent = bin;
-        item.addEventListener('mousedown', (e) => {
-            e.preventDefault();
-            binInput.value = bin;
-            binHistory.style.display = 'none';
-            binInput.focus();
-        });
-        binHistory.appendChild(item);
-    });
-}
-
-// Event listeners for BIN input (from enhanced version)
-binInput.addEventListener('change', () => {
-    const bin = binInput.value.trim();
-    if (bin.length >= 6) {
-        saveBinToHistory(bin);
-    }
-});
-
-binInput.addEventListener('focus', () => {
-    if (savedBins.length > 0) {
-        updateBinHistoryDropdown();
-        binHistory.style.display = 'block';
-    }
-});
-
-binInput.addEventListener('input', () => {
-    if (binInput.value === '' && savedBins.length > 0) {
-        updateBinHistoryDropdown();
-        binHistory.style.display = 'block';
-    }
-});
-
-binInput.addEventListener('blur', () => {
-    setTimeout(() => {
-        binHistory.style.display = 'none';
-    }, 200);
-});
 
 // ORIGINAL CARD GENERATION FUNCTIONS ====================
 function luhnCheck(num) {
@@ -157,12 +87,11 @@ function generateCards() {
     document.getElementById("output").value = result;
 }
 
-// ENHANCED COPY FUNCTION (from enhanced version)
 function copyOutput() {
     let outputField = document.getElementById("output");
     outputField.select();
     document.execCommand("copy");
-    showCopyNotification(); // Uses the enhanced notification
+    showCopyNotification();
 }
 
 // Initialize click-to-copy for all copyable elements
