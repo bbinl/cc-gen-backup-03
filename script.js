@@ -4687,10 +4687,10 @@ function Ti(t, e) {
                         bin: "",
                         month: "",
                         year: "",
-                        ccv2: "",
+                        cvc: "",
                         quantity: 15,
                         dateEnabled: !0,
-                        ccv2Enabled: !0,
+                        cvcEnabled: !0,
                         creditCards: "",
                         length: 16,
                         cardTypes: [{
@@ -4713,7 +4713,7 @@ function Ti(t, e) {
                         var t = "";
                         if (!("" === this.bin || this.bin.length < 6)) {
                             this.creditCards = "";
-                            for (var e = 0; e < this.quantity; e++) this.creditCards += this.makeCC(), 0 === e && (t = this.creditCards), this.generateDate(), this.generateCCV2(), e < this.quantity - 1 && (this.creditCards += "\n");
+                            for (var e = 0; e < this.quantity; e++) this.creditCards += this.makeCC(), 0 === e && (t = this.creditCards), this.generateDate(), this.generateCVC(), e < this.quantity - 1 && (this.creditCards += "\n");
                             this.type(t), r.a.$emit("result:show", this.creditCards)
                         }
                     },
@@ -4737,8 +4737,8 @@ function Ti(t, e) {
                             e = "" === this.month ? this.pad(this.rand(1, 12), 2) : this.month, t = "" === this.year ? parseInt((new Date).getFullYear()) + parseInt(this.rand(2, 5)) : this.year, this.creditCards += "|" + e + "|" + t
                         }
                     },
-                    generateCCV2: function() {
-                        if (this.ccv2Enabled) return this.ccv2 ? this.creditCards += "|" + this.ccv2 : void(this.creditCards += "|" + this.rand(0, 9).toString() + this.rand(0, 9).toString() + this.rand(0, 9).toString() + (15 === this.length ? this.rand(0, 9).toString() : ""))
+                    generateCVC: function() {
+                        if (this.cvcEnabled) return this.cvc ? this.creditCards += "|" + this.cvc : void(this.creditCards += "|" + this.rand(0, 9).toString() + this.rand(0, 9).toString() + this.rand(0, 9).toString() + (15 === this.length ? this.rand(0, 9).toString() : ""))
                     },
                     addPlaceholder: function(t) {
                         var e = "";
@@ -5006,7 +5006,7 @@ function Ti(t, e) {
                     staticClass: "col-md-8"
                 }, [n("div", {
                     staticClass: "form-group"
-                }, [n("label", [t._v("CCV2")]), t._v(" "), n("div", {
+                }, [n("label", [t._v("CVC")]), t._v(" "), n("div", {
                     staticClass: "input-group"
                 }, [n("span", {
                     staticClass: "input-group-addon"
@@ -5014,46 +5014,46 @@ function Ti(t, e) {
                     directives: [{
                         name: "model",
                         rawName: "v-model",
-                        value: t.ccv2Enabled,
-                        expression: "ccv2Enabled"
+                        value: t.cvcEnabled,
+                        expression: "cvcEnabled"
                     }],
                     attrs: {
                         type: "checkbox"
                     },
                     domProps: {
-                        checked: Array.isArray(t.ccv2Enabled) ? t._i(t.ccv2Enabled, null) > -1 : t.ccv2Enabled
+                        checked: Array.isArray(t.cvcEnabled) ? t._i(t.cvcEnabled, null) > -1 : t.cvcEnabled
                     },
                     on: {
                         change: function(e) {
-                            var n = t.ccv2Enabled,
+                            var n = t.cvcEnabled,
                                 r = e.target,
                                 i = !!r.checked;
                             if (Array.isArray(n)) {
                                 var o = t._i(n, null);
-                                r.checked ? o < 0 && (t.ccv2Enabled = n.concat([null])) : o > -1 && (t.ccv2Enabled = n.slice(0, o).concat(n.slice(o + 1)))
-                            } else t.ccv2Enabled = i
+                                r.checked ? o < 0 && (t.cvcEnabled = n.concat([null])) : o > -1 && (t.cvcEnabled = n.slice(0, o).concat(n.slice(o + 1)))
+                            } else t.cvcEnabled = i
                         }
                     }
                 })]), t._v(" "), n("input", {
                     directives: [{
                         name: "model",
                         rawName: "v-model",
-                        value: t.ccv2,
-                        expression: "ccv2"
+                        value: t.cvc,
+                        expression: "cvc"
                     }],
                     staticClass: "form-control",
                     attrs: {
                         type: "number",
-                        name: "ccv2",
-                        id: "ccv2",
-                        placeholder: "Leave blank to randomize"
+                        name: "cvc",
+                        id: "cvc",
+                        placeholder: "Random"
                     },
                     domProps: {
-                        value: t.ccv2
+                        value: t.cvc
                     },
                     on: {
                         input: function(e) {
-                            e.target.composing || (t.ccv2 = e.target.value)
+                            e.target.composing || (t.cvc = e.target.value)
                         }
                     }
                 })])])]), t._v(" "), n("div", {
