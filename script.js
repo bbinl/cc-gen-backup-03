@@ -5120,17 +5120,29 @@ function Ti(t, e) {
 });
 
 
-
-
-
-
+//drop down and up bin section
 function toggleDropdown(header) {
-    const card = header.parentElement;
+    // Safely get parent elements and required DOM nodes
+    const card = header.closest('.bin-dropdown-card');
+    if (!card) return; // Exit if card not found
+    
     const details = card.querySelector('.bin-dropdown-details');
     const arrow = card.querySelector('.bin-dropdown-arrow');
     
-    details.classList.toggle('show');
-    arrow.classList.toggle('down');
+    if (details && arrow) {
+        // Toggle classes
+        details.classList.toggle('show');
+        arrow.classList.toggle('down');
+        
+        // Optional: Close other open dropdowns
+        const allCards = document.querySelectorAll('.bin-dropdown-card');
+        allCards.forEach(otherCard => {
+            if (otherCard !== card) {
+                otherCard.querySelector('.bin-dropdown-details')?.classList.remove('show');
+                otherCard.querySelector('.bin-dropdown-arrow')?.classList.remove('down');
+            }
+        });
+    }
 }
 
 // Initialize click-to-copy for all copyable elements
