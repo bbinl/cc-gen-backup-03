@@ -27,8 +27,8 @@
 .btn-link {
     display: inline-block;
     text-decoration: none;
-    background: linear-gradient(45deg, #ffcc00, #ff6600);
-    padding: 10px 100px; /* সুন্দর প্যাডিং */
+    background: #05f505;
+    padding: 5px 10px; /* সুন্দর প্যাডিং */
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
@@ -39,33 +39,8 @@
     
 }
 
-/* Hover effect */
-.btn-link:hover {
-    background: #fa0202; /* কোবল্ট ব্লু ব্যাকগ্রাউন্ড */
-    color: #ffffff; /* সাদা টেক্সট */
-    border: 2px solid #ffffff; /* সাদা বর্ডার যখন হোভার হবে */
-}
-
 textarea {
     resize: both; /* অনুভূমিক এবং উল্লম্ব সাইজ রিসাইজ করার অনুমতি */
-}
-
-a {
-    color: #ffffff !important; /* ডিফল্ট রঙ সাদা */
-    text-decoration: none;
-}
-
-a:hover,
-a:focus {
-    color: #ffffff !important; /* হোভার হলে লাল হবে */
-    text-decoration: underline;
-}
-
-.btn-primary:active,
-.btn-primary:hover {
-    color: #fff;
-    background: #ff0000; /* Cobalt Blue Gradient */
-    border-color: #fff;
 }
 
 .navigations {
@@ -588,6 +563,7 @@ input[type=radio][disabled] {
     cursor: not-allowed
 }
 
+/*generate card and copy button*/
 .btn {
     display: inline-block;
     margin-bottom: 0;
@@ -621,40 +597,16 @@ input[type=radio][disabled] {
     text-decoration: none
 }
 
-.btn:active {
-    outline: 0;
-    background-image: none;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125)
-}
-
 .btn[disabled] {
     cursor: not-allowed;
     opacity: .65;
     filter: alpha(opacity=65);
     box-shadow: none
 }
-
 .btn-primary {
     color: #fff;
     background: linear-gradient(45deg, #ffcc00, #ff6600);
     border-color: #000000;
-}
-
-.btn-primary:focus {
-    color: #fff;
-    background: linear-gradient(45deg, #ffcc00, #ff6600);
-    border-color: #000;
-}
-
-.btn-primary:active:focus,
-.btn-primary:active:hover {
-    color: #fff;
-    background: linear-gradient(45deg, #0047AB, #002D72); /* Cobalt Blue Gradient */
-    border-color: #fff;
-}
-
-.btn-primary:active {
-    background: linear-gradient(45deg, #0047AB, #002D72);
 }
 
 .btn-primary[disabled]:focus,
@@ -899,21 +851,6 @@ body {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0
 }
-
-.img-fluid {
-    max-width: 100%
-}
-.link{
-		color: #fff;
-		text-decoration:none;
-		font-family:Lato;
-		}
-		.link:hover{
-			color:#fff;
-			text-decoration:none;
-			}
-
-
 
 .bin-section {
   padding: 10px 20px;
