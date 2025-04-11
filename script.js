@@ -5124,94 +5124,52 @@ function Ti(t, e) {
 
 
 
-// টোয়াস্ট নোটিফিকেশন ফাংশন
-function showCopyNotification(text = 'কপি করা হয়েছে!') {
-  const toast = document.getElementById('toast-notification');
-  toast.textContent = text;
-  toast.classList.add('show');
-  
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2000);
-}
-
-// কপি ফাংশন (ক্লিপবোর্ড API সহ ফ্যালব্যাক)
-async function copyToClipboard(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    showCopyNotification(`কপি করা হয়েছে: ${text}`);
-  } catch (err) {
-    // ফ্যালব্যাক মেথড
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.opacity = '0';
-    document.body.appendChild(textarea);
-    textarea.select();
+function toggleDropdown(header) {
+    const card = header.parentElement;
+    const details = card.querySelector('.bin-dropdown-details');
+    const arrow = card.querySelector('.bin-dropdown-arrow');
     
-    try {
-      document.execCommand('copy');
-      showCopyNotification(`কপি করা হয়েছে: ${text}`);
-    } catch (err) {
-      showCopyNotification('কপি করতে ব্যর্থ!');
-      console.error('Failed to copy:', err);
-    } finally {
-      document.body.removeChild(textarea);
-    }
-  }
+    details.classList.toggle('show');
+    arrow.classList.toggle('down');
 }
 
-// সকল কপিযোগ্য এলিমেন্টে ইভেন্ট লিসেনার যোগ করুন
-function initializeCopyableElements() {
-  const selectors = [
-    '.copyable', 
-    '.bin-item code', 
-    '.bin-detail code', 
-    '.bin-dropdown-value',
-    '.bin-dropdown-bin'
-  ];
-  
-  selectors.forEach(selector => {
-    document.querySelectorAll(selector).forEach(element => {
-      // শুধুমাত্র খালি বা "Not Available" টেক্সট বাদ দিন
-      if (element.textContent.trim() && 
-          !element.textContent.includes('Not Available') && 
-          element.textContent.trim() !== '-') {
-        element.addEventListener('click', function() {
-          copyToClipboard(this.textContent.trim());
-        });
-      }
+// Initialize click-to-copy for all copyable elements
+document.querySelectorAll('.copyable, .bin-item code, .bin-detail code, .bin-dropdown-value').forEach(code => {
+    code.addEventListener('click', function() {
+        navigator.clipboard.writeText(this.textContent)
+            .then(() => {
+                showCopyNotification();
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+                // Fallback for browsers that don't support navigator.clipboard
+                const textarea = document.createElement('textarea');
+                textarea.value = this.textContent;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showCopyNotification();
+            });
     });
-  });
-}
-
-// পেজ লোড হলে ইনিশিয়ালাইজ করুন
-document.addEventListener('DOMContentLoaded', function() {
-  initializeCopyableElements();
-  
-  // আপনার অন্যান্য ইনিশিয়ালাইজেশন কোড...
-  document.querySelectorAll('.bin-dropdown-details').forEach(details => {
-    details.classList.remove('show');
-  });
-  
-  document.querySelectorAll('.bin-dropdown-arrow').forEach(arrow => {
-    arrow.classList.remove('down');
-  });
 });
 
-// ড্রপডাউন টগল ফাংশন (আপনার আগের ফাংশন)
-function toggleDropdown(headerElement) {
-  const card = headerElement.parentElement;
-  const details = card.querySelector('.bin-dropdown-details');
-  const arrow = headerElement.querySelector('.bin-dropdown-arrow');
-  
-  details.classList.toggle('show');
-  arrow.classList.toggle('down');
-  
-  document.querySelectorAll('.bin-dropdown-card').forEach(otherCard => {
-    if (otherCard !== card) {
-      otherCard.querySelector('.bin-dropdown-details').classList.remove('show');
-      otherCard.querySelector('.bin-dropdown-arrow').classList.remove('down');
-    }
-  });
+// উন্নত টোয়াস্ট ফাংশন
+function showCopyNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'toast-notification';
+    notification.textContent = 'Copy Done! ✓';
+    document.body.appendChild(notification);
+    
+    // Force reflow
+    void notification.offsetWidth;
+    
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 200); // এনিমেশন শেষ হওয়ার জন্য অপেক্ষা
+    }, 600);
 }
