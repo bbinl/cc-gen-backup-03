@@ -240,7 +240,7 @@ input[type=search] {
 
 /* BIN Section */
 .bin-section {
-    padding: 10px 20px;
+    padding: 5px 2px;
     background-color: var(--light);
     border-bottom: 1px solid var(--border);
 }
@@ -321,8 +321,13 @@ input[type=search] {
     cursor: pointer;
 }
 
-.bin-dropdown-bin {
-    color: #FF0000;
+.bin-live {
+    color: #00ff15;
+    font-weight: bold;
+}
+
+.bin-dead {
+    color: #ff0000;
     font-weight: bold;
 }
 
