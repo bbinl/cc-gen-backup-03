@@ -22,82 +22,158 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Bro BIN lagbe CC Checker</h1>
-    </header>
+<div id="app">
+  <nav class="navigations">
+        <div class="site-header"><a herf="https://bbinl.github.io/cc-gen/">
+            <img src="favicon.png" alt="Logo" class="header-logo"></a>
+          BBINL CC Gen
+        </div>
+    </nav>
 
-    <br>
+  <div align="center" class="link-section">
+            <a href="https://bbinl.github.io/cc-checker/" class="btn-link" class="link">
+                <i class="fa-solid fa-credit-card"></i> CC Checker
+            </a> 
+</div>  
+     <br> 
+         <div class="container">
+ <!-- BIN Information Section -->
+    <div class="bin-section">
+      <div class="bin-dropdown-container">
+        <!-- YouTube Premium Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">YouTube Premium BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value bin-live">5154620022558124</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">12/28</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Street:</span>
+              <span class="bin-dropdown-value">IND,0062</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Postcode:</span>
+              <span class="bin-dropdown-value">020101</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Province:</span>
+              <span class="bin-dropdown-value">Almaty</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">City:</span>
+              <span class="bin-dropdown-value">Semipalatinsk</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Country:</span>
+              <span class="bin-dropdown-value">Kazakhstan</span>
+            </div>
+          </div>
+        </div>
 
-    <div class="link-section">
-      <a href="https://bbinl.github.io/cc-gen/" class="btn-link">
-        <i class="fa-solid fa-credit-card"></i> CC Generator
-      </a>
+        <!-- Canva Pro Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">Canva Pro BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value bin-dead">4118410007xxxxxx</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">07/31</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Billing Address:</span>
+              <span class="bin-dropdown-value">BD or Other</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Postcode:</span>
+              <span class="bin-dropdown-value"></span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">IP:</span>
+              <span class="bin-dropdown-value">US</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hotspot Shield Card -->
+        <div class="bin-dropdown-card">
+          <div class="bin-dropdown-header" onclick="toggleDropdown(this)">
+            <div class="bin-dropdown-title">Hotspot Shield BIN</div>
+            <div class="bin-dropdown-arrow">▼</div>
+          </div>
+          <div class="bin-dropdown-details">
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">BIN:</span>
+              <span class="bin-dropdown-value bin-live">41546444006xxxxx</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">Date:</span>
+              <span class="bin-dropdown-value">10/27</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">ZIP:</span>
+              <span class="bin-dropdown-value">1000</span>
+            </div>
+            <div class="bin-dropdown-row">
+              <span class="bin-dropdown-label">IP:</span>
+              <span class="bin-dropdown-value">OWN</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <br>
-
-    <main>
-      <section class="input-section">
-        <label for="numbers">Credit Card Numbers:</label>
-        <br><br>
-        <textarea id="numbers" rows="8" placeholder="515462002115xxxx|01|2027|000"></textarea>
-      </section>
-
-      <br>
-
-      <section class="action-section">
-        <button id="check-btn">
-          <i class="fa-solid fa-play"></i> Start Checking
-        </button>
-        <br><br>
-        <button id="stop-check-btn" disabled>
-          <i class="fa-solid fa-stop"></i> Stop Checking
-        </button>
-      </section>
-
-      <br>
-
-      <section class="output-section">
-        <div class="result-container live-box">
-          <h2><span class="live">Live</span>: <span id="ali-count">0</span></h2>
-          <br>
-          <div id="ali-numbers"></div>
-          <br>
+    <div id="toast-notification" class="toast-notification"></div>
+  <br>
+        <div class="row">
+            <div class="col-md-6">
+                <form-generator></form-generator>
+<button type="submit" class="btn btn-primary btn-block" onclick="copy()"><b>Copy Cards</b></button>
+            </div>
+            <div class="col-md-6">
+                <generated-credit-cards></generated-credit-cards>
+            </div>
         </div>
+        <input type="hidden" name="IL_IN_ARTICLE">
+        <input type="hidden" name="IL_IN_TAG" value="2">
+ 
+    </div>
+ <br>
+ <center><p>Copyright 2025 All Rights Reserved <a href="https://t.me/bro_bin_lagbe" >&nbsp;©Bro Bin Lagbe </a>
+    </center>
+ <div id="hiddenElement" style="display: none;">
+    source code: https://github.com/avipatilpro/CC_Gen?tab=readme-ov-file , https://avipatilpro.github.io/CC_Gen/
+ </div>
 
-        <br>
+        <script>
+function copy(){
+    document.querySelector("textarea").select();
+    document.execCommand('copy');
+}
+</script>
 
-        <div class="result-container dead-box">
-          <h2><span class="dead">Dead</span>: <span id="muhammad-count">0</span></h2>
-          <br>
-          <div id="muhammad-numbers"></div>
-          <br>
-        </div>
-
-        <br>
-
-        <div class="result-container unknown-box">
-          <h2><span class="unknown">Unknown</span>: <span id="murad-count">0</span></h2>
-          <br>
-          <div id="murad-numbers"></div>
-          <br>
-        </div>
-      </section>
-    </main>
-
-    <br>
-
-    <footer>
-      <a href="https://t.me/bro_bin_lagbe" target="_blank" class="telegram-link">
-        <i class="fa-brands fa-telegram"></i> @bro_bin_lagbe
-      </a>
-      <br><br>
-      <p>All copyright belong to <a href="https://uncoder.eu.org" style="text-decoration:none; color:#ffcc00;">uncoder.eu.org</a></p>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
+  <script>
+        function copyToClipboard(element) {
+            const text = element.innerText;
+            navigator.clipboard.writeText(text).catch(err => {
+                alert('Failed to copy! Please try again.');
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+    
+<script src="script.js"></script>
+   </body>
+      </html>
